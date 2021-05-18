@@ -12,7 +12,7 @@ class _FoodPageState extends State<FoodPage> {
       children: [
         Column(
           children: [
-            //// HEADER
+//// HEADER
             Container(
               padding: EdgeInsets.symmetric(horizontal: defaultMargin),
               color: Colors.white,
@@ -26,13 +26,8 @@ class _FoodPageState extends State<FoodPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Food Market",
+                        "FoodMarket",
                         style: blackFontStyle,
-                        // style: GoogleFonts.poppins(
-                        //   color: Colors.black,
-                        //   fontSize: 22,
-                        //   fontWeight: FontWeight.w500,
-                        // ),
                       ),
                       Text(
                         "Let's get some foods",
@@ -57,7 +52,10 @@ class _FoodPageState extends State<FoodPage> {
                   )
                 ],
               ),
-            )
+            ),
+//// LIST OF FOOD
+            FoodCard(mockFood),
+//// LIST OF FOOD (TABS)
           ],
         )
       ],
