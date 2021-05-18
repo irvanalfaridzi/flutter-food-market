@@ -9,7 +9,7 @@ TextStyle greyFontStyle = GoogleFonts.poppins().copyWith(
   color: greyColor,
 );
 
-TextStyle blackFontStyle = GoogleFonts.poppins().copyWith(
+TextStyle blackFontStyle = GoogleFonts.poppins(
   color: Colors.black,
   fontSize: 22,
   fontWeight: FontWeight.w500,
