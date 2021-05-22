@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_market_alfa/models/models.dart';
 import 'package:get/get.dart';
 
 import 'ui/pages/pages.dart';
@@ -12,7 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      home: FoodDetailPage(
+        transaction: Transaction(
+          food: mockFoods[0],
+        ),
+      ),
     );
   }
 }
