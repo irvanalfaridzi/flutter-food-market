@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false, home: SuccessSignUpPage(),
+      debugShowCheckedModeBanner: false, home: MainPage(),
       // PaymentPage(
       //   transaction: Transaction(
       //     food: mockFoods[0],
