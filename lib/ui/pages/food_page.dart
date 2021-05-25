@@ -32,7 +32,7 @@ class _FoodPageState extends State<FoodPage> {
                     children: [
                       Text(
                         'Food Market',
-                        style: blackFontStyle,
+                        style: blackFontStyle1,
                       ),
                       Text(
                         "Let's get some foods",
@@ -75,7 +75,7 @@ class _FoodPageState extends State<FoodPage> {
                                           right: defaultMargin),
                                       child: GestureDetector(
                                           onTap: () {
-                                            Get.to(FoodDetailPage(
+                                            Get.to(FoodDetailsPage(
                                               transaction: Transaction(
                                                   food: e,
                                                   user: (context
@@ -116,14 +116,12 @@ class _FoodPageState extends State<FoodPage> {
                   ),
                   BlocBuilder<FoodCubit, FoodState>(builder: (_, state) {
                     if (state is FoodLoaded) {
-                      List<Food> foods = state.foods
-                          .where((element) =>
-                              element.types.contains((selectedIndex == 0)
-                                  ? FoodType.new_food
-                                  : (selectedIndex == 1)
-                                      ? FoodType.popular
-                                      : FoodType.recommended))
-                          .toList();
+                      List<Food> foods = state.foods.where((element) =>
+                          element.types.contains((selectedIndex == 0)
+                              ? FoodType.new_food
+                              : (selectedIndex == 1)
+                                  ? FoodType.popular
+                                  : FoodType.recommended)).toList();
 
                       return Column(
                         children: foods

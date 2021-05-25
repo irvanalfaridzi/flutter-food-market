@@ -4,10 +4,8 @@ class OrderListItem extends StatelessWidget {
   final Transaction transaction;
   final double itemWidth;
 
-  OrderListItem({
-    @required this.transaction,
-    this.itemWidth,
-  });
+  OrderListItem({@required this.transaction, @required this.itemWidth});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,15 +15,13 @@ class OrderListItem extends StatelessWidget {
           height: 60,
           margin: EdgeInsets.only(right: 12),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            image: DecorationImage(
-              image: NetworkImage(transaction.food.picturePath),
-              fit: BoxFit.cover,
-            ),
-          ),
+              borderRadius: BorderRadius.circular(8),
+              image: DecorationImage(
+                  image: NetworkImage(transaction.food.picturePath),
+                  fit: BoxFit.cover)),
         ),
         SizedBox(
-          width: itemWidth - 182, //(60 + 12 + 110)
+          width: itemWidth - 182, // (60 + 12 + 110)
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -36,16 +32,12 @@ class OrderListItem extends StatelessWidget {
                 overflow: TextOverflow.clip,
               ),
               Text(
-                '${transaction.quantity} item(s) . ' +
+                "${transaction.quantity} item(s) • " +
                     NumberFormat.currency(
-                      symbol: 'IDR ',
-                      decimalDigits: 0,
-                      locale: 'id-ID',
-                    ).format(transaction.total),
-                style: greyFontStyle.copyWith(
-                  fontSize: 13,
-                ),
-              ),
+                            symbol: 'IDR ', decimalDigits: 0, locale: 'id-ID')
+                        .format(transaction.total),
+                style: greyFontStyle.copyWith(fontSize: 13),
+              )
             ],
           ),
         ),
@@ -55,36 +47,26 @@ class OrderListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                convertDateTime(
-                  transaction.dateTime,
-                ),
-                style: greyFontStyle.copyWith(
-                  fontSize: 12,
-                ),
+                convertDateTime(transaction.dateTime),
+                style: greyFontStyle.copyWith(fontSize: 12),
               ),
               (transaction.status == TransactionStatus.cancelled)
                   ? Text(
-                      "Cancelled",
+                      'Cancelled',
                       style: GoogleFonts.poppins(
-                        color: "D9435E".toColor(),
-                        fontSize: 10,
-                      ),
+                          color: 'D9435E'.toColor(), fontSize: 10),
                     )
                   : (transaction.status == TransactionStatus.pending)
                       ? Text(
-                          "Pending",
+                          'Pending',
                           style: GoogleFonts.poppins(
-                            color: "D9435E".toColor(),
-                            fontSize: 10,
-                          ),
+                              color: 'D9435E'.toColor(), fontSize: 10),
                         )
                       : (transaction.status == TransactionStatus.on_delivery)
                           ? Text(
-                              "On Delivery",
+                              'On Delivery',
                               style: GoogleFonts.poppins(
-                                color: "1ABC9C".toColor(),
-                                fontSize: 10,
-                              ),
+                                  color: '1ABC9C'.toColor(), fontSize: 10),
                             )
                           : SizedBox()
             ],
@@ -96,43 +78,45 @@ class OrderListItem extends StatelessWidget {
 
   String convertDateTime(DateTime dateTime) {
     String month;
+
     switch (dateTime.month) {
       case 1:
-        month = "Jan";
+        month = 'Jan';
         break;
       case 2:
-        month = "Feb";
+        month = 'Feb';
         break;
       case 3:
-        month = "Mar";
+        month = 'Mar';
         break;
       case 4:
-        month = "Apr";
+        month = 'Apr';
         break;
       case 5:
-        month = "Mey";
+        month = 'May';
         break;
       case 6:
-        month = "Jun";
+        month = 'Jun';
         break;
       case 7:
-        month = "Jul";
+        month = 'Jul';
         break;
       case 8:
-        month = "Ags";
+        month = 'Aug';
         break;
       case 9:
-        month = "Sep";
+        month = 'Sep';
         break;
       case 10:
-        month = "Okt";
+        month = 'Oct';
         break;
       case 11:
-        month = "Nov";
+        month = 'Nov';
         break;
       default:
-        month = "Des";
+        month = 'Des';
     }
+
     return month + ' ${dateTime.day}, ${dateTime.hour}:${dateTime.minute}';
   }
 }

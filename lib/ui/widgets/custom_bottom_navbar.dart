@@ -4,10 +4,8 @@ class CustomBottomNavBar extends StatelessWidget {
   final int selectedIndex;
   final Function(int index) onTap;
 
-  CustomBottomNavBar({
-    this.selectedIndex = 0,
-    this.onTap,
-  });
+  CustomBottomNavBar({this.selectedIndex = 0, this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,14 +25,12 @@ class CustomBottomNavBar extends StatelessWidget {
               width: 32,
               height: 32,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    "assets/ic_home" +
-                        ((selectedIndex == 0) ? ".png" : "_normal.png"),
-                  ),
-                  fit: BoxFit.contain,
-                ),
-              ),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        'assets/ic_home' +
+                            ((selectedIndex == 0) ? '.png' : '_normal.png'),
+                      ),
+                      fit: BoxFit.contain)),
             ),
           ),
           GestureDetector(
@@ -48,14 +44,12 @@ class CustomBottomNavBar extends StatelessWidget {
               height: 32,
               margin: EdgeInsets.symmetric(horizontal: 83),
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    "assets/ic_order" +
-                        ((selectedIndex == 1) ? ".png" : "_normal.png"),
-                  ),
-                  fit: BoxFit.contain,
-                ),
-              ),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        'assets/ic_order' +
+                            ((selectedIndex == 1) ? '.png' : '_normal.png'),
+                      ),
+                      fit: BoxFit.contain)),
             ),
           ),
           GestureDetector(
@@ -68,16 +62,14 @@ class CustomBottomNavBar extends StatelessWidget {
               width: 32,
               height: 32,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                    "assets/ic_profile" +
-                        ((selectedIndex == 2) ? ".png" : "_normal.png"),
-                  ),
-                  fit: BoxFit.contain,
-                ),
-              ),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        'assets/ic_profile' +
+                            ((selectedIndex == 2) ? '.png' : '_normal.png'),
+                      ),
+                      fit: BoxFit.contain)),
             ),
-          ),
+          )
         ],
       ),
     );

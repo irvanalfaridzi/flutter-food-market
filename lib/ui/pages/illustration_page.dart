@@ -9,15 +9,15 @@ class IllustrationPage extends StatelessWidget {
   final Function buttonTap1;
   final Function buttonTap2;
 
-  IllustrationPage({
-    @required this.title,
-    @required this.subtitle,
-    @required this.picturePath,
-    @required this.buttonTitle1,
-    this.buttonTitle2,
-    @required this.buttonTap1,
-    this.buttonTap2,
-  });
+  IllustrationPage(
+      {@required this.title,
+      @required this.subtitle,
+      @required this.picturePath,
+      @required this.buttonTap1,
+      this.buttonTap2,
+      @required this.buttonTitle1,
+      this.buttonTitle2});
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -25,36 +25,23 @@ class IllustrationPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: 200,
-            height: 221,
+            width: 150,
+            height: 150,
             margin: EdgeInsets.only(bottom: 50),
             decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(picturePath),
-              ),
-            ),
+                image: DecorationImage(image: AssetImage(picturePath))),
           ),
           Text(
             title,
-            style: blackFontStyle3.copyWith(
-              fontSize: 20,
-            ),
-          ),
-          SizedBox(
-            height: 6,
+            style: blackFontStyle3.copyWith(fontSize: 20),
           ),
           Text(
             subtitle,
-            style: greyFontStyle.copyWith(
-              fontWeight: FontWeight.w300,
-            ),
+            style: greyFontStyle.copyWith(fontWeight: FontWeight.w300),
             textAlign: TextAlign.center,
           ),
           Container(
-            margin: EdgeInsets.only(
-              top: 30,
-              bottom: 12,
-            ),
+            margin: EdgeInsets.only(top: 30, bottom: 12),
             width: 200,
             height: 45,
             child: RaisedButton(
@@ -62,13 +49,10 @@ class IllustrationPage extends StatelessWidget {
               color: mainColor,
               elevation: 0,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
+                  borderRadius: BorderRadius.circular(8)),
               child: Text(
                 buttonTitle1,
-                style: blackFontStyle3.copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
+                style: blackFontStyle3.copyWith(fontWeight: FontWeight.w500),
               ),
             ),
           ),
@@ -79,20 +63,17 @@ class IllustrationPage extends StatelessWidget {
                   height: 45,
                   child: RaisedButton(
                     onPressed: buttonTap2,
-                    color: "8D92A3".toColor(),
+                    color: '8D92A3'.toColor(),
                     elevation: 0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                        borderRadius: BorderRadius.circular(8)),
                     child: Text(
-                      buttonTitle2 ?? "title 2",
-                      style: blackFontStyle3.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
+                      buttonTitle2 ?? 'title',
+                      style:
+                          blackFontStyle3.copyWith(fontWeight: FontWeight.w500, color: Colors.white),
                     ),
                   ),
-                ),
+                )
         ],
       ),
     );

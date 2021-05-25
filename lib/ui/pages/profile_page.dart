@@ -1,315 +1,130 @@
 part of 'pages.dart';
 
 class ProfilePage extends StatefulWidget {
-  final User user;
-
-  ProfilePage({this.user});
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  int initialTab = 0;
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            color: Colors.white,
-          ),
-          SafeArea(
-            child: Container(
-              color: "FAFAFC".toColor(),
-            ),
-          ),
-          SafeArea(
-            child: ListView(
-              children: [
-                Column(
+    return ListView(
+      children: [
+        Column(
+          children: [
+            //// Header
+            Container(
+                padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                height: 220,
+                margin: EdgeInsets.only(bottom: defaultMargin),
+                width: double.infinity,
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: defaultMargin,
-                      ),
-                      width: double.infinity,
-                      height: 232,
-                      color: Colors.white,
-                      child: Column(
-                        children: [
-// Photos
-                          Container(
-                            width: 110,
-                            height: 110,
-                            margin: EdgeInsets.only(top: 26),
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  "assets/photo_border.png",
-                                ),
-                              ),
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                  image: NetworkImage(
-                                    (context.bloc<UserCubit>().state
-                                            as UserLoaded)
-                                        .user
-                                        .picturePath,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 16,
-                          ),
-                          //// Nama
-                          Text(
-                            (context.bloc<UserCubit>().state as UserLoaded)
-                                .user
-                                .name,
-                            style: GoogleFonts.poppins(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Text(
-                            (context.bloc<UserCubit>().state as UserLoaded)
-                                .user
-                                .email,
-                            style: greyFontStyle,
-                          )
-                        ],
+                      width: 110,
+                      height: 110,
+                      margin: EdgeInsets.only(bottom: 16),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/photo_border.png'))),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: NetworkImage((context
+                                        .bloc<UserCubit>()
+                                        .state as UserLoaded)
+                                    .user
+                                    .picturePath),
+                                fit: BoxFit.cover)),
                       ),
                     ),
-                    Container(
-                      height: defaultMargin,
-                      width: double.infinity,
+                    Text(
+                      (context.bloc<UserCubit>().state as UserLoaded).user.name,
+                      style: GoogleFonts.poppins(
+                          fontSize: 18, fontWeight: FontWeight.w500),
                     ),
-                    Container(
-                      color: Colors.white,
-                      child: Column(
-                        children: [
-                          CustomTabBar(
-                            titles: [
-                              "Account",
-                              "FoodMarket",
-                            ],
-                            onTap: (index) {
-                              setState(() {
-                                initialTab = index;
-                              });
-                            },
-                            selectedIndex: initialTab,
-                          ),
-                          SizedBox(
-                            height: 16,
-                          ),
-                          (initialTab == 0)
-                              ? Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: defaultMargin,
-                                        left: defaultMargin,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Edit Profile",
-                                            style: blackFontStyle3,
-                                          ),
-                                          Image.asset(
-                                            "assets/right_arrow.png",
-                                            width: 24,
-                                            height: 24,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: defaultMargin,
-                                        left: defaultMargin,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Home Address",
-                                            style: blackFontStyle3,
-                                          ),
-                                          Image.asset(
-                                            "assets/right_arrow.png",
-                                            width: 24,
-                                            height: 24,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: defaultMargin,
-                                        left: defaultMargin,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Security",
-                                            style: blackFontStyle3,
-                                          ),
-                                          Image.asset(
-                                            "assets/right_arrow.png",
-                                            width: 24,
-                                            height: 24,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: defaultMargin,
-                                        left: defaultMargin,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Payments",
-                                            style: blackFontStyle3,
-                                          ),
-                                          Image.asset(
-                                            "assets/right_arrow.png",
-                                            width: 24,
-                                            height: 24,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                )
-                              : Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: defaultMargin,
-                                        left: defaultMargin,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Rate App",
-                                            style: blackFontStyle3,
-                                          ),
-                                          Image.asset(
-                                            "assets/right_arrow.png",
-                                            width: 24,
-                                            height: 24,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: defaultMargin,
-                                        left: defaultMargin,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Help Center",
-                                            style: blackFontStyle3,
-                                          ),
-                                          Image.asset(
-                                            "assets/right_arrow.png",
-                                            width: 24,
-                                            height: 24,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: defaultMargin,
-                                        left: defaultMargin,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Privacy & Policy",
-                                            style: blackFontStyle3,
-                                          ),
-                                          Image.asset(
-                                            "assets/right_arrow.png",
-                                            width: 24,
-                                            height: 24,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: defaultMargin,
-                                        left: defaultMargin,
-                                        bottom: 16,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Terms & Conditions",
-                                            style: blackFontStyle3,
-                                          ),
-                                          Image.asset(
-                                            "assets/right_arrow.png",
-                                            width: 24,
-                                            height: 24,
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                )
-                        ],
-                      ),
-                    ),
+                    Text(
+                      (context.bloc<UserCubit>().state as UserLoaded)
+                          .user
+                          .email,
+                      style:
+                          greyFontStyle.copyWith(fontWeight: FontWeight.w300),
+                    )
                   ],
-                ),
-                SizedBox(
-                  height: 80,
-                ),
-              ],
+                )),
+            //// Body
+            Container(
+              width: double.infinity,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  CustomTabBar(
+                    titles: ["Account", "FoodMarket"],
+                    selectedIndex: selectedIndex,
+                    onTap: (index) {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Column(
+                    children: ((selectedIndex == 0)
+                            ? [
+                                'Edit Profile',
+                                'Home Address',
+                                'Security',
+                                'Payment'
+                              ]
+                            : [
+                                'Rate App',
+                                'Help Center',
+                                'Privacy & Policy',
+                                'Term & Condition'
+                              ])
+                        .map((e) => Padding(
+                              padding: EdgeInsets.only(
+                                  bottom: 16,
+                                  left: defaultMargin,
+                                  right: defaultMargin),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    e,
+                                    style: blackFontStyle3,
+                                  ),
+                                  SizedBox(
+                                    height: 24,
+                                    width: 24,
+                                    child: Image.asset(
+                                      'assets/right_arrow.png',
+                                      fit: BoxFit.contain,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ))
+                        .toList(),
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+            SizedBox(
+              height: 80,
+            )
+          ],
+        ),
+      ],
     );
   }
 }
