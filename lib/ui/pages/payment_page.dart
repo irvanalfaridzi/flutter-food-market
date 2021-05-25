@@ -17,7 +17,9 @@ class _PaymentPageState extends State<PaymentPage> {
     return GeneralPage(
       title: 'Payment',
       subtitle: 'You deserve better meal',
-      onBackButtonPressed: () {},
+      onBackButtonPressed: () {
+        Get.back();
+      },
       backColor: 'FAFAFC'.toColor(),
       child: Column(
         children: [
