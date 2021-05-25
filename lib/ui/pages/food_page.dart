@@ -47,7 +47,9 @@ class _FoodPageState extends State<FoodPage> {
                       borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
                         image: NetworkImage(
-                          "https://2.bp.blogspot.com/-2TQetb34eT4/XDRmUaoE9sI/AAAAAAAABlE/WkfOuJOJF68W_vDhypibC5Sw_12CRtN9wCLcBGAs/s1600/Jennie-BLACKPINK-Berhasil-Raih-Trofi-Pertama-Untuk-Lagu-SOLO-di-Hari-Debut-Solo-Stage-2.jpg",
+                          (context.bloc<UserCubit>().state as UserLoaded)
+                              .user
+                              .picturePath,
                         ),
                         fit: BoxFit.cover,
                       ),
@@ -65,14 +67,30 @@ class _FoodPageState extends State<FoodPage> {
                 children: [
                   Row(
                     children: mockFoods
-                        .map((e) => Padding(
-                              padding: EdgeInsets.only(
-                                  right: defaultMargin,
-                                  left: (e == mockFoods.first)
-                                      ? defaultMargin
-                                      : 0),
-                              child: FoodCard(e),
-                            ))
+                        .map(
+                          (e) => Padding(
+                            padding: EdgeInsets.only(
+                                right: defaultMargin,
+                                left:
+                                    (e == mockFoods.first) ? defaultMargin : 0),
+                            child: GestureDetector(
+                                onTap: () {
+                                  Get.to(
+                                    FoodDetailPage(
+                                      transaction: Transaction(
+                                          food: e,
+                                          user: (context.bloc<UserCubit>().state
+                                                  as UserLoaded)
+                                              .user),
+                                      onBackButtonPressed: () {
+                                        Get.back();
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: FoodCard(e)),
+                          ),
+                        )
                         .toList(),
                   )
                 ],

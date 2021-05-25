@@ -55,7 +55,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                    "https://2.bp.blogspot.com/-2TQetb34eT4/XDRmUaoE9sI/AAAAAAAABlE/WkfOuJOJF68W_vDhypibC5Sw_12CRtN9wCLcBGAs/s1600/Jennie-BLACKPINK-Berhasil-Raih-Trofi-Pertama-Untuk-Lagu-SOLO-di-Hari-Debut-Solo-Stage-2.jpg",
+                                    (context.bloc<UserCubit>().state
+                                            as UserLoaded)
+                                        .user
+                                        .picturePath,
                                   ),
                                 ),
                               ),
@@ -66,7 +69,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           ),
                           //// Nama
                           Text(
-                            widget.user.name,
+                            (context.bloc<UserCubit>().state as UserLoaded)
+                                .user
+                                .name,
                             style: GoogleFonts.poppins(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
@@ -76,7 +81,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             height: 6,
                           ),
                           Text(
-                            widget.user.email,
+                            (context.bloc<UserCubit>().state as UserLoaded)
+                                .user
+                                .email,
                             style: greyFontStyle,
                           )
                         ],
