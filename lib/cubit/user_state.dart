@@ -11,6 +11,7 @@ class UserInitial extends UserState {}
 
 class UserLoaded extends UserState {
   final User user;
+
   UserLoaded(this.user);
 
   @override
@@ -19,6 +20,7 @@ class UserLoaded extends UserState {
 
 class UserLoadingFailed extends UserState {
   final String message;
+
   UserLoadingFailed(this.message);
 
   @override

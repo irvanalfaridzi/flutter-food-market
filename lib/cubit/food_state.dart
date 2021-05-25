@@ -11,6 +11,7 @@ class FoodInitial extends FoodState {}
 
 class FoodLoaded extends FoodState {
   final List<Food> foods;
+
   FoodLoaded(this.foods);
 
   @override
@@ -19,6 +20,7 @@ class FoodLoaded extends FoodState {
 
 class FoodLoadingFailed extends FoodState {
   final String message;
+
   FoodLoadingFailed(this.message);
 
   @override

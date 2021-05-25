@@ -22,12 +22,10 @@ class TransactionCubit extends Cubit<TransactionState> {
   Future<bool> submitTransaction(Transaction transaction) async {
     ApiReturnValue<Transaction> result =
         await TransactionServices.submitTransaction(transaction);
+
     if (result.value != null) {
-      emit(
-        TransactionLoaded(
-          (state as TransactionLoaded).transactions + [result.value],
-        ),
-      );
+      emit(TransactionLoaded(
+          (state as TransactionLoaded).transactions + [result.value]));
       return true;
     } else {
       return false;

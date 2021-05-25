@@ -11,6 +11,7 @@ class TransactionInitial extends TransactionState {}
 
 class TransactionLoaded extends TransactionState {
   final List<Transaction> transactions;
+
   TransactionLoaded(this.transactions);
 
   @override
@@ -19,6 +20,7 @@ class TransactionLoaded extends TransactionState {
 
 class TransactionLoadingFailed extends TransactionState {
   final String message;
+
   TransactionLoadingFailed(this.message);
 
   @override
