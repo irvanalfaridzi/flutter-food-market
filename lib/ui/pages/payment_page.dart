@@ -390,7 +390,10 @@ class _PaymentPageState extends State<PaymentPage> {
                           blackFontStyle3.copyWith(fontWeight: FontWeight.w500),
                     ),
                   ),
-                )
+                ),
+          SizedBox(
+            height: 24,
+          )
         ],
       ),
     );
